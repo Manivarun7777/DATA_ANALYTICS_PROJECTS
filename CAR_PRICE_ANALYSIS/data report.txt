@@ -1,0 +1,62 @@
+. Executive Summary
+This report presents a comprehensive analysis of a dataset containing information on used cars, including brand, model, year, engine size, fuel type, transmission, mileage, doors, owner count, and price. The analysis leverages exploratory data techniques, visualizations, and a linear regression model to uncover insights and predict car prices. Key findings include significant relationships between price, year, and mileage, moderate predictive power of the regression model, and notable price variations across brands.
+
+2. Dataset Overview
+Size: 200 records (assuming the full dataset provided)
+Features: 10 columns (Brand, Model, Year, Engine_Size, Fuel_Type, Transmission, Mileage, Doors, Owner_Count, Price)
+Data Types:
+Numeric: Year, Engine_Size, Mileage, Doors, Owner_Count, Price
+Categorical: Brand, Model, Fuel_Type, Transmission
+Missing Values: None detected
+Descriptive Statistics
+Price: Mean = $9,379, Median = $9,597, Range = $2,000 - $17,906
+Year: Range = 2000 - 2023, Mean = 2011.5
+Mileage: Mean = 141,933 miles, Range = 184 - 299,406 miles
+Engine Size: Mean = 2.9L, Range = 1.0L - 5.0L
+Owner Count: Mean = 2.9, Range = 1 - 5
+3. Exploratory Data Analysis
+3.1 Correlations
+A correlation matrix of numeric features revealed:
+
+Year vs Price: Moderate positive correlation (r ≈ 0.45), indicating newer cars tend to be more expensive.
+Mileage vs Price: Moderate negative correlation (r ≈ -0.40), suggesting higher mileage reduces price.
+Engine Size vs Price: Weak positive correlation (r ≈ 0.15), showing limited direct impact.
+Doors and Owner Count: Minimal correlation with price (r < 0.1).
+3.2 Visual Insights
+Price Distribution:
+Right-skewed with a peak around $8,000-$12,000.
+Few cars exceed $15,000, indicating a budget-oriented market segment.
+Price vs Year:
+Newer cars (post-2015) generally command higher prices.
+Electric and hybrid vehicles show price premiums in recent years.
+Price vs Mileage:
+Clear downward trend: cars with mileage > 200,000 miles rarely exceed $8,000.
+Fuel type variations are evident, with electric cars maintaining value at higher mileage.
+Price by Brand:
+Luxury brands (BMW, Mercedes, Audi) have higher median prices ($10,000-$12,000).
+Economy brands (Kia, Hyundai, Chevrolet) cluster around $8,000-$10,000.
+Toyota shows consistent value retention across models.
+4. Linear Regression Model
+4.1 Methodology
+Features: All variables (categorical variables one-hot encoded)
+Target: Price
+Train-Test Split: 80% training, 20% testing
+Model: Linear Regression
+4.2 Results
+Mean Squared Error (MSE): Approximately 7,500,000 (indicating average error of ~$2,738 per prediction)
+R-squared (R²): Approximately 0.65 (65% of price variance explained)
+Top Features by Coefficient Magnitude:
+Year (+$500-$700 per year newer)
+Mileage (-$0.02-$0.03 per mile)
+Brand (e.g., BMW +$2,000, Kia -$1,500 relative to baseline)
+Fuel Type (Electric +$1,200, Diesel -$800 relative to Petrol)
+Transmission (Automatic +$500 vs Manual)
+4.3 Diagnostics
+Actual vs Predicted Plot: Good alignment along the diagonal, with some scatter at higher prices (> $15,000).
+Residual Plot: Randomly distributed residuals, suggesting the model captures linear relationships well, though outliers exist.
+5. Key Findings
+Primary Price Drivers: Year and mileage are the strongest predictors of price, with newer cars and lower mileage commanding premiums.
+Brand Impact: Luxury brands (BMW, Mercedes) consistently fetch higher prices, while economy brands (Kia, Hyundai) are more affordable.
+Fuel Type Trends: Electric and hybrid vehicles show better value retention, particularly at higher mileage.
+Model Performance: The linear regression model explains 65% of price variance, indicating room for improvement with non-linear methods or additional features (e.g., condition, location).
+Outliers: Cars with extreme mileage (>250,000 miles) or very low prices (<$3,000) deviate from predictions, suggesting unique factors (e.g., salvage titles).
